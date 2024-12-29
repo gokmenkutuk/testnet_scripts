@@ -10,9 +10,9 @@ sudo apt install -y curl git jq lz4 build-essential
 
 # Install Go
 sudo rm -rf /usr/local/go
-curl -L https://go.dev/dl/go1.22.7.linux-amd64.tar.gz | sudo tar -xzf - -C /usr/local
-echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> $HOME/.profile
-source $HOME/.profile
+curl -Ls https://go.dev/dl/go1.22.10.linux-amd64.tar.gz | sudo tar -xzf - -C /usr/local
+eval $(echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee /etc/profile.d/golang.sh)
+eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)
 
 # Clone project repository
 cd && rm -rf axoned
